@@ -144,37 +144,83 @@ New users complete a profile questionnaire:
 - Enhanced AI features
 - Extended learning paths
 
-├── app/                    # Expo Router app directory
 
-│   ├── (auth)/            # Authentication routes
-│   ├── (main)/            # Main app routes
+⌘K to generate a command
+GIVE ME THE FULL DATABASE SCHEMA AND THE OPTIMAL FOLDER STRUCTURE OF THE APP AND ADD THIS IN THE CONTEXT-FILE @CONTEXT.MD 
 
-│   └── _layout.tsx        # Root layout
+I'll help you add detailed database schema and folder structure sections to the CONTEXT.MD file. Here are the relevant additions/edits:
+Structure
 
-├── components/            # Reusable components
-│   ├── ui/               # UI components
-
-│   ├── features/         # Feature-specific components
-
-│   └── layouts/          # Layout components
-
-├── lib/                  # Utility functions and configs
-
-│   ├── supabase/        # Supabase client and types
-
-│   ├── ai/              # AI integration
-
-│   └── utils/           # Helper functions
-
-├── hooks/               # Custom React hooks
-
-├── constants/           # App constants and types
-
-├── assets/             # Images, fonts, etc.
-
-├── styles/             # Global styles
-
-└── tests/              # Test files
+src/
+├── app/ # Expo Router app directory
+│ ├── (auth)/ # Authentication routes
+│ │ ├── login.tsx
+│ │ ├── register.tsx
+│ │ ├── forgot-password.tsx
+│ │ └── layout.tsx
+│ ├── (main)/ # Main app routes
+│ │ ├── home/
+│ │ ├── problems/
+│ │ ├── profile/
+│ │ ├── learning-paths/
+│ │ └── settings/
+│ └── layout.tsx # Root layout
+├── components/
+│ ├── ui/ # Reusable UI components
+│ │ ├── buttons/
+│ │ ├── forms/
+│ │ ├── cards/
+│ │ └── modals/
+│ ├── features/ # Feature-specific components
+│ │ ├── auth/
+│ │ ├── problems/
+│ │ ├── profile/
+│ │ └── learning-paths/
+│ └── layouts/ # Layout components
+│ ├── AuthLayout.tsx
+│ └── MainLayout.tsx
+├── lib/
+│ ├── supabase/ # Supabase integration
+│ │ ├── client.ts
+│ │ ├── types.ts
+│ │ └── queries/
+│ ├── ai/ # AI integration
+│ │ ├── deepseek.ts
+│ │ └── code-analysis.ts
+│ └── utils/ # Helper functions
+│ ├── validation.ts
+│ ├── formatting.ts
+│ └── analytics.ts
+├── hooks/ # Custom React hooks
+│ ├── useAuth.ts
+│ ├── useProblems.ts
+│ └── useProgress.ts
+├── constants/
+│ ├── routes.ts
+│ ├── config.ts
+│ └── types.ts
+├── assets/
+│ ├── images/
+│ ├── fonts/
+│ └── icons/
+├── styles/
+│ ├── theme.ts
+│ └── global.ts
+├── services/ # API and external services
+│ ├── api/
+│ ├── storage/
+│ └── analytics/
+├── context/ # React Context providers
+│ ├── AuthContext.tsx
+│ └── ThemeContext.tsx
+├── types/ # TypeScript type definitions
+│ ├── api.ts
+│ ├── models.ts
+│ └── common.ts
+└── tests/ # Test files
+├── unit/
+├── integration/
+└── e2e/
 
 # Development Roadmap
 
