@@ -1,22 +1,22 @@
-import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Text, Button, TextInput } from 'react-native-paper';
-import { useRouter } from 'expo-router';
-import { useAuth } from '../src/hooks/useAuth';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { Text, Button, TextInput } from "react-native-paper";
+import { useRouter } from "expo-router";
+import { useAuth } from "../src/hooks/useAuth";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Login() {
   const router = useRouter();
   const { signIn } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
     try {
       setLoading(true);
       await signIn(email, password);
-      router.replace('/');
+      router.replace("/");
     } catch (error) {
       console.error(error);
       // Handle error (show error message)
@@ -60,7 +60,7 @@ export default function Login() {
 
         <Button
           mode="text"
-          onPress={() => router.push('/register')}
+          onPress={() => router.push("/register")}
           style={styles.button}
         >
           Create Account
@@ -73,26 +73,26 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   content: {
     flex: 1,
     padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     marginBottom: 30,
-    textAlign: 'center',
+    textAlign: "center",
   },
   input: {
-    width: '100%',
+    width: "100%",
     maxWidth: 300,
     marginBottom: 16,
   },
   button: {
-    width: '100%',
+    width: "100%",
     maxWidth: 300,
     marginVertical: 8,
   },
-}); 
+});

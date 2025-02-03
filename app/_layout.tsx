@@ -1,7 +1,8 @@
-import { Stack } from 'expo-router';
-import { PaperProvider } from 'react-native-paper';
-import { AuthProvider } from '../src/context/AuthContext';
-import { theme } from '../src/constants/theme';
+import React from "react";
+import { Stack } from "expo-router";
+import { PaperProvider } from "react-native-paper";
+import { AuthProvider } from "../src/context/AuthContext";
+import { theme } from "../src/constants/theme";
 
 export default function RootLayout() {
   return (
@@ -12,10 +13,10 @@ export default function RootLayout() {
             headerStyle: {
               backgroundColor: theme.colors.primary,
             },
-            headerTintColor: '#fff',
+            headerTintColor: "#fff",
           }}
         />
       </AuthProvider>
     </PaperProvider>
   );
-} 
+}
