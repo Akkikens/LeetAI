@@ -34,6 +34,7 @@ bash
 EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
 EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 Setup
+Ktf1n7bFQWiwZ6a5 Database Password
 src/
 ├── app/ # Expo Router app directory
 │ ├── (auth)/ # Authentication routes
