@@ -29,34 +29,34 @@ export default function Home() {
   if (!user) {
     return (
       <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
-        <Text variant="headlineMedium" style={styles.title}>
-          Welcome to LeetAI
-        </Text>
-        <Button
-          mode="contained"
-          onPress={() => router.push("/login")}
-          style={styles.button}
-        >
-          Login
-        </Button>
-        <Button
-          mode="outlined"
-          onPress={() => router.push("/register")}
-          style={styles.button}
-        >
-          Sign Up
-        </Button>
+        <View style={styles.content}>
+          <Text style={styles.logo}>LeetAI</Text>
+          <Text variant="headlineMedium" style={styles.title}>
+            Welcome to LeetAI
+          </Text>
+          <Text style={styles.subtitle}>Learn coding for free. Forever.</Text>
+          <Button
+            mode="contained"
+            onPress={() => router.push("/login")}
+            style={styles.button}
+          >
+            Login
+          </Button>
+          <Button
+            mode="outlined"
+            onPress={() => router.push("/register")}
+            style={styles.button}
+          >
+            Sign Up
+          </Button>
+        </View>
       </Animated.View>
     );
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text variant="headlineMedium" style={styles.title}>
-          Welcome back to LeetAI
-        </Text>
-      </View>
+      <Text>Welcome back!</Text>
     </SafeAreaView>
   );
 }
@@ -64,19 +64,34 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-  },
-  content: {
-    flex: 1,
-    padding: 20,
+    backgroundColor: "#4CAF50", // Duolingo green
     alignItems: "center",
     justifyContent: "center",
   },
+  content: {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  logo: {
+    fontSize: 48,
+    fontWeight: "bold",
+    color: "#fff",
+    marginBottom: 20,
+  },
   title: {
+    fontSize: 32,
+    color: "#fff",
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#fff",
     marginBottom: 30,
     textAlign: "center",
   },
   button: {
+    width: "80%",
     marginVertical: 8,
   },
 });

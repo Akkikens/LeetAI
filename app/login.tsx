@@ -50,13 +50,15 @@ export default function Login() {
           onPress={handleLogin}
           loading={loading}
           style={styles.button}
+          labelStyle={styles.buttonLabel}
         >
           Login
         </Button>
         <Button
-          mode="text"
+          mode="contained"
           onPress={() => router.push("/register")}
           style={styles.button}
+          labelStyle={styles.buttonLabel}
         >
           Create Account
         </Button>
@@ -68,7 +70,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#4CAF50",
   },
   content: {
     flex: 1,
@@ -79,15 +81,21 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 30,
     textAlign: "center",
+    color: "#fff",
   },
   input: {
     width: "100%",
     maxWidth: 300,
     marginBottom: 16,
+    backgroundColor: "#fff",
   },
   button: {
     width: "100%",
     maxWidth: 300,
     marginVertical: 8,
+    backgroundColor: "#4CAF50",
+  },
+  buttonLabel: {
+    color: "#fff",
   },
 });
