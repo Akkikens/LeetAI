@@ -1,60 +1,61 @@
 import React, { useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Animated } from "react-native";
 import { Text, Button } from "react-native-paper";
 import { useRouter } from "expo-router";
-import { useAuth } from "../src/hooks/useAuth";
+import { useAuth } from "../src/context/AuthContext";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
+  const { user, loading } = useAuth();
+  const fadeAnim = new Animated.Value(0);
   const router = useRouter();
-  const { user, signOut } = useAuth();
 
   useEffect(() => {
-    if (!user) {
-      router.replace("/login");
-    }
-  }, [user]);
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text>Loading...</Text>
+      </SafeAreaView>
+    );
+  }
+
+  if (!user) {
+    return (
+      <Animated.View style={{ ...styles.container, opacity: fadeAnim }}>
+        <Text variant="headlineMedium" style={styles.title}>
+          Welcome to LeetAI
+        </Text>
+        <Button
+          mode="contained"
+          onPress={() => router.push("/login")}
+          style={styles.button}
+        >
+          Login
+        </Button>
+        <Button
+          mode="outlined"
+          onPress={() => router.push("/register")}
+          style={styles.button}
+        >
+          Sign Up
+        </Button>
+      </Animated.View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text variant="headlineMedium" style={styles.title}>
-          Welcome to LeetAI
+          Welcome back to LeetAI
         </Text>
-
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="contained"
-            onPress={() => router.push("/problems")}
-            style={styles.button}
-          >
-            Start Coding
-          </Button>
-
-          <Button
-            mode="contained"
-            onPress={() => router.push("/learning-paths")}
-            style={styles.button}
-          >
-            Learning Paths
-          </Button>
-
-          <Button
-            mode="contained"
-            onPress={() => router.push("/profile")}
-            style={styles.button}
-          >
-            My Profile
-          </Button>
-
-          <Button
-            mode="outlined"
-            onPress={() => signOut()}
-            style={styles.button}
-          >
-            Sign Out
-          </Button>
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -74,10 +75,6 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 30,
     textAlign: "center",
-  },
-  buttonContainer: {
-    width: "100%",
-    maxWidth: 300,
   },
   button: {
     marginVertical: 8,

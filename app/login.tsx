@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Text, Button, TextInput } from "react-native-paper";
 import { useRouter } from "expo-router";
-import { useAuth } from "../src/hooks/useAuth";
+import { useAuth } from "../src/context/AuthContext";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Login() {
@@ -19,7 +19,6 @@ export default function Login() {
       router.replace("/");
     } catch (error) {
       console.error(error);
-      // Handle error (show error message)
     } finally {
       setLoading(false);
     }
@@ -31,7 +30,6 @@ export default function Login() {
         <Text variant="headlineMedium" style={styles.title}>
           Login to LeetAI
         </Text>
-
         <TextInput
           label="Email"
           value={email}
@@ -40,7 +38,6 @@ export default function Login() {
           keyboardType="email-address"
           style={styles.input}
         />
-
         <TextInput
           label="Password"
           value={password}
@@ -48,7 +45,6 @@ export default function Login() {
           secureTextEntry
           style={styles.input}
         />
-
         <Button
           mode="contained"
           onPress={handleLogin}
@@ -57,7 +53,6 @@ export default function Login() {
         >
           Login
         </Button>
-
         <Button
           mode="text"
           onPress={() => router.push("/register")}
